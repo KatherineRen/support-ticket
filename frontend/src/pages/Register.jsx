@@ -20,6 +20,7 @@ function Register() {
 
   const navigate = useNavigate()
 
+  //useSelector to get all global state
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   )
@@ -58,7 +59,6 @@ function Register() {
       dispatch(register(userData))
     }
   }
-
   if (isLoading) {
     return <Spinner />
   }
@@ -71,7 +71,6 @@ function Register() {
         </h1>
         <p>Please create an account</p>
       </section>
-
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>
@@ -79,8 +78,8 @@ function Register() {
               type='text'
               className='form-control'
               id='name'
-              name='name'
               value={name}
+              name='name'
               onChange={onChange}
               placeholder='Enter your name'
               required
@@ -91,8 +90,8 @@ function Register() {
               type='email'
               className='form-control'
               id='email'
-              name='email'
               value={email}
+              name='email'
               onChange={onChange}
               placeholder='Enter your email'
               required
@@ -103,10 +102,10 @@ function Register() {
               type='password'
               className='form-control'
               id='password'
-              name='password'
               value={password}
+              name='password'
               onChange={onChange}
-              placeholder='Enter password'
+              placeholder='Enter your password'
               required
             />
           </div>
@@ -115,8 +114,8 @@ function Register() {
               type='password'
               className='form-control'
               id='password2'
-              name='password2'
               value={password2}
+              name='password2'
               onChange={onChange}
               placeholder='Confirm password'
               required

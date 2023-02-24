@@ -34,8 +34,8 @@ function Login() {
   }, [isError, isSuccess, user, message, navigate, dispatch])
 
   const onChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((prevState) => ({
+      ...prevState,
       [e.target.name]: e.target.value,
     }))
   }
@@ -57,36 +57,34 @@ function Login() {
     <>
       <section className='heading'>
         <h1>
-          <FaSignInAlt />
-          Login
+          <FaSignInAlt /> Login In
         </h1>
-        <p>Please log in to get support </p>
+        <p>Please log in to get support</p>
       </section>
-
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>
             <input
               type='email'
               className='form-control'
-              name='email'
               id='email'
               value={email}
+              name='email'
               onChange={onChange}
-              required
               placeholder='Enter your email'
+              required
             />
           </div>
           <div className='form-group'>
             <input
               type='password'
               className='form-control'
-              name='password'
               id='password'
               value={password}
+              name='password'
               onChange={onChange}
-              required
               placeholder='Enter your password'
+              required
             />
           </div>
           <div className='form-group'>

@@ -9,8 +9,10 @@ const {
 
 const { protect } = require('../middleware/authMiddleware')
 
+//register route
 router.post('/', registerUser)
 
+//login route
 router.post('/login', loginUser)
 
 //create protected route

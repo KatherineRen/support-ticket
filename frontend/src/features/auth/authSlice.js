@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import authService from './authService'
+import authService from '../auth/authService'
 
 //get user from localstorage
 const user = JSON.parse(localStorage.getItem('user'))
@@ -51,6 +51,7 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logOut()
 })
 
+//handle actions in reducers
 export const authSlice = createSlice({
   name: 'auth',
   initialState,

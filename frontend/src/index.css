@@ -47,7 +47,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px 15px;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 60px;
 }
@@ -80,6 +80,7 @@ h3 {
   font-weight: 700;
   margin-bottom: 50px;
   padding: 0 20px;
+  text-align: center;
 }
 
 .heading p {
@@ -136,6 +137,10 @@ h3 {
   margin: 0 0 5px 3px;
 }
 
+.btn-group {
+  padding: 0 10px;
+}
+
 .btn {
   padding: 10px 20px;
   border: 1px solid #000;
@@ -178,6 +183,7 @@ h3 {
 
 .btn-back {
   width: 150px;
+  margin-left: 20px;
   margin-bottom: 20px;
 }
 
@@ -211,7 +217,7 @@ h3 {
 .ticket,
 .ticket-headings {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   justify-content: space-between;
   align-items: center;
@@ -256,6 +262,7 @@ h3 {
 }
 
 .ticket-page {
+  padding: 0 10px;
   position: relative;
   text-align: left;
 }
@@ -310,11 +317,10 @@ h3 {
 }
 
 .delete-note {
-  color: red;
-  cursor: pointer;
   position: absolute;
-  bottom: 10px;
+  bottom: -20px;
   right: 20px;
+  margin-bottom: -20px;
 }
 
 .btn-close {
