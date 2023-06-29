@@ -33,7 +33,6 @@ export const register = createAsyncThunk(
 )
 //submit form call it -Login user
 export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
-  console.log(user)
   try {
     return await authService.login(user)
   } catch (error) {

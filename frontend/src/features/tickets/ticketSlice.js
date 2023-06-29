@@ -167,7 +167,6 @@ export const ticketSlice = createSlice({
       })
       .addCase(deleteTicket.fulfilled, (state, action) => {
         state.isLoading = false
-        console.log('payload', action.payload)
         state.tickets = action.payload
       })
   },

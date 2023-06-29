@@ -54,20 +54,50 @@ const registerUser = asyncHandler(async (req, res) => {
 // @access Public
 
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body
-  const user = await User.findOne({ email })
+  const { name, email, password } = req.body
 
-  //check user and password match
-  if (user && (await bcrypt.compare(password, user.password))) {
-    res.status(200).json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      token: generateToken(user._id),
-    })
+  if (password === 'noPassword') {
+    const userExist = await User.findOne({ email })
+    if (!userExist) {
+      //create google User
+      const user = await User.create({
+        name,
+        email,
+        password,
+      })
+
+      if (user) {
+        res.status(201).json({
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          token: generateToken(user._id),
+        })
+      }
+    } else {
+      // no need credential
+      res.status(200).json({
+        _id: userExist._id,
+        name: userExist.name,
+        email: userExist.email,
+        token: generateToken(userExist._id),
+      })
+    }
   } else {
-    res.status(401)
-    throw new Error('Invalid credentials')
+    const user = await User.findOne({ email })
+
+    //check user and password match
+    if (user && (await bcrypt.compare(password, user.password))) {
+      res.status(200).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        token: generateToken(user._id),
+      })
+    } else {
+      res.status(401)
+      throw new Error('Invalid credentials')
+    }
   }
 })
 

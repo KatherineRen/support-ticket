@@ -106,7 +106,6 @@ export const noteSlice = createSlice({
       })
       .addCase(deleteNoteAndGetNotes.fulfilled, (state, action) => {
         state.isLoading = false
-        console.log('payload', action.payload)
         state.notes = action.payload
       })
   },

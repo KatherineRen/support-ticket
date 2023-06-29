@@ -43,6 +43,7 @@ const getTicket = asyncHandler(async (req, res) => {
   //limit user who own the ticket then can access the ticket
   if (ticket.user.toString() !== req.user.id) {
     res.status(401)
+
     throw new Errow('Not Authorized')
   }
 

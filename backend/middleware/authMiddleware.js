@@ -5,6 +5,7 @@ const User = require('../models/userModel')
 //a function protect route
 const protect = asyncHandler(async (req, res, next) => {
   let token
+
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
@@ -20,12 +21,14 @@ const protect = asyncHandler(async (req, res, next) => {
     } catch (error) {
       console.log(error)
       res.status(401)
+
       throw new Error('Not authorized')
     }
   }
 
   if (!token) {
     res.status(401)
+
     throw new Error('Not authorized')
   }
 })

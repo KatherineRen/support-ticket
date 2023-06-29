@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { login, reset } from '../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../components/Spinner'
+import { UserAuth } from '../context/AuthContext'
+import { GoogleLoginButton } from 'react-social-login-buttons'
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -20,6 +22,8 @@ function Login() {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   )
+
+  const { googleSignIn } = UserAuth()
 
   useEffect(() => {
     if (isError) {
@@ -51,6 +55,15 @@ function Login() {
 
   if (isLoading) {
     return <Spinner />
+  }
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn()
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -91,6 +104,11 @@ function Login() {
             <button className='btn btn-block'>Submit</button>
           </div>
         </form>
+        <section className='googlelogin'>
+          <div>
+            <GoogleLoginButton onClick={handleGoogleSignIn} />
+          </div>
+        </section>
       </section>
     </>
   )
